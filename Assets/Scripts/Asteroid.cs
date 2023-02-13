@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Asteroid : FallingObject
 {
-    private Vector2 _speedMinMax = new Vector2(7, 15);
+    private Vector2 _speedMinMax = new Vector2(7, 13);
 
     void Start()
     {

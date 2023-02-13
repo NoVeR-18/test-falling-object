@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject _loseMenu;
 
+    private CoinController _coinController;
 
     private bool _onClick;
     private bool _moveOnStrat = false;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        _coinController = GetComponent<CoinController>();
         screenHalfWidthInWorldUnits = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);
     }
 
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour
         if (_moveOnStrat)
         {
             Debug.Log("move on start");
+            _coinController.CoinScore = 0;
+            _coinController.AddCoin(0);
             transform.Translate(Vector2.down * _speed * Time.deltaTime);
             if (transform.position.y < -screenHalfWidthInWorldUnits.y+2f)
             {
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Lose()
     {
+        _coinController.GoToMenu();
         _gameMenu.SetActive(false);
         InputChange(0);
         _loseMenu.SetActive(true);
