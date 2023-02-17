@@ -18,9 +18,9 @@ public class Asteroid : FallingObject
 
     void OnTriggerEnter2D(Collider2D triggerCollider)
     {
-        if (triggerCollider.tag == "Player")
+        if (triggerCollider.TryGetComponent<PlayerController>(out PlayerController hinge))
         {
-            triggerCollider.GetComponent<PlayerController>().Lose();
+            hinge.Lose();
             Destroy(gameObject);
         }
     }
