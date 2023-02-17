@@ -5,8 +5,6 @@ using UnityEngine;
 public class Coin : FallingObject
 {
     [SerializeField]
-    private AudioClip _coin;
-    [SerializeField]
     private int _cost = 1;
 
 
@@ -20,7 +18,6 @@ public class Coin : FallingObject
         if (triggerCollider.tag == "Player")
         {
             triggerCollider.GetComponent<CoinController>().AddCoin(_cost);
-            //CoinController.CoinScore += _cost;
             Destroy(gameObject);
         }
     }
